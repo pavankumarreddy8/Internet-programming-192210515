@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Details</title>
+    <link rel="stylesheet" href="search.css">
+    <style>
+        .bus-details {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="bus-details">
+            <h2>Available Buses</h2>
+            <div id="details-container"></div>
+        </section>
+
+        <script>
+            // Function to get query parameters
+            function getQueryParams() {
+                const params = new URLSearchParams(window.location.search);
+                return {
+                    sourceCity: params.get('source-city'),
+                    destinationCity: params.get('destination-city'),
+                    travelDate: params.get('travel-date'),
+                };
+            }
+
+            // Display bus details based on query parameters
+            function displayBusDetails() {
+                const { sourceCity, destinationCity, travelDate } = getQueryParams();
+                const container = document.getElementById('details-container');
+
+                if (sourceCity && destinationCity && travelDate) {
+                    container.innerHTML = `
+                        <p>From: ${sourceCity}</p>
+                        <p>To: ${destinationCity}</p>
+                        <p>Date: ${travelDate}</p>
+
+                        <h3>Available Buses:</h3>
+                        <ul>
+                            <li>
+                                <a href="seat.html?bus=1&source-city=${sourceCity}&destination-city=${destinationCity}&travel-date=${travelDate}">
+                                    <strong>Bus 1:</strong> ${sourceCity} to ${destinationCity} - 9:00 AM - 6:00 PM (AC Sleeper)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="seat.html?bus=2&source-city=${sourceCity}&destination-city=${destinationCity}&travel-date=${travelDate}">
+                                    <strong>Bus 2:</strong> ${sourceCity} to ${destinationCity} - 10:00 AM - 7:00 PM (Non-AC Seater)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="seat.html?bus=3&source-city=${sourceCity}&destination-city=${destinationCity}&travel-date=${travelDate}">
+                                    <strong>Bus 3:</strong> ${sourceCity} to ${destinationCity} - 1:00 PM - 10:00 PM (AC Semi-Sleeper)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="seat.html?bus=4&source-city=${sourceCity}&destination-city=${destinationCity}&travel-date=${travelDate}">
+                                    <strong>Bus 4:</strong> ${sourceCity} to ${destinationCity} - 3:00 PM - 12:00 AM (Luxury Sleeper)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="seat.html?bus=5&source-city=${sourceCity}&destination-city=${destinationCity}&travel-date=${travelDate}">
+                                    <strong>Bus 5:</strong> ${sourceCity} to ${destinationCity} - 5:00 PM - 2:00 AM (AC Seater)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="seat.html?bus=6&source-city=${sourceCity}&destination-city=${destinationCity}&travel-date=${travelDate}">
+                                    <strong>Bus 6:</strong> ${sourceCity} to ${destinationCity} - 7:00 PM - 4:00 AM (AC Sleeper Volvo)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="seat.html?bus=7&source-city=${sourceCity}&destination-city=${destinationCity}&travel-date=${travelDate}">
+                                    <strong>Bus 7:</strong> ${sourceCity} to ${destinationCity} - 9:00 PM - 6:00 AM (Non-AC Sleeper)
+                                </a>
+                            </li>
+                        </ul>
+                    `;
+                } else {
+                    container.innerHTML = "<p>No bus details available. Please check your selections.</p>";
+                }
+            }
+
+            // Run the function when the page loads
+            window.onload = displayBusDetails;
+        </script>
+    </main>
+</body>
+</html>

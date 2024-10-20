@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterCity SmartBus</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header>
+        <div class="contact">
+            <p>Call to book <strong>7995036464</strong></p>
+            <a href="user.html"><button class="sign-in"><span></span>Sign In</button></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>It's not a bus<br>It's a <span>SmartBus</span></h1>
+            <div class="features">
+                <p>In-Bus Washroom</p>
+                <p>Smart Boarding Lounges</p>
+                <p>Safety and Hygiene</p>
+                <p>Trained Bus Captain</p>
+            </div>
+            <div class="discount">
+                <h2>Save ₹600 on SmartBus</h2>
+                <p>with Savings Card</p>
+            </div>
+        </section>
+
+        <section class="search">
+            <h2>Book Your Bus Ticket</h2>
+            <form action="search.html" method="get">
+                <label for="source-city">Source City</label>
+                <select id="source-city" name="source-city">
+                    <option value="mumbai">Mumbai</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="bangalore">Bangalore</option>
+                    <option value="hyderabad">Hyderabad</option>
+                    <option value="chennai">Chennai</option>
+                    <option value="kolkata">Kolkata</option>
+                    <option value="ahmedabad">Ahmedabad</option>
+                    <option value="pune">Pune</option>
+                    <option value="jaipur">Jaipur</option>
+                    <option value="lucknow">Lucknow</option>
+                </select>
+
+                <label for="destination-city">Destination City</label>
+                <select id="destination-city" name="destination-city">
+                    <option value="mumbai">Mumbai</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="bangalore">Bangalore</option>
+                    <option value="hyderabad">Hyderabad</option>
+                    <option value="chennai">Chennai</option>
+                    <option value="kolkata">Kolkata</option>
+                    <option value="ahmedabad">Ahmedabad</option>
+                    <option value="pune">Pune</option>
+                    <option value="jaipur">Jaipur</option>
+                    <option value="lucknow">Lucknow</option>
+                </select>
+
+                <div class="date-selector">
+                    <label for="travel-date">Travel Date</label>
+                    <input type="date" id="travel-date" name="travel-date">
+                </div>
+
+                <button type="submit"><span></span>Search</button>
+            </form>
+        </section>
+
+        <section class="link-to-details">
+            <a href="search.html">View Bus Details</a>
+        </section>
+        
+    </main>
+</body>
+</html>

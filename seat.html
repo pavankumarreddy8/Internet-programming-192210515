@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Ticket Booking - Seat Selection</title>
+  <link rel="stylesheet" href="seat.css">
+  <style>
+      .selected {
+          background-color: #4CAF50; /* Green for selected seats */
+          color: white;
+      }
+      .bus-structure {
+          margin: 20px;
+      }
+      .seat {
+          width: 40px;
+          height: 40px;
+          margin: 5px;
+          cursor: pointer;
+      }
+      .aisle {
+          display: inline-block;
+          width: 20px;
+      }
+  </style>
+</head>
+<body>
+  <h2>Select Your Seat</h2>
+  <div id="bus-info"></div>
+
+  <div class="bus-structure">
+    <div class="seat-row">
+      <button class="seat" data-seat="1">1</button>
+      <button class="seat" data-seat="2">2</button>
+      <div class="aisle"></div>
+      <button class="seat" data-seat="3">3</button>
+      <button class="seat" data-seat="4">4</button>
+    </div>
+    <div class="seat-row">
+      <button class="seat" data-seat="5">5</button>
+      <button class="seat" data-seat="6">6</button>
+      <div class="aisle"></div>
+      <button class="seat" data-seat="7">7</button>
+      <button class="seat" data-seat="8">8</button>
+    </div>
+    <div class="seat-row">
+      <button class="seat" data-seat="9">9</button>
+      <button class="seat" data-seat="10">10</button>
+      <div class="aisle"></div>
+      <button class="seat" data-seat="11">11</button>
+      <button class="seat" data-seat="12">12</button>
+    </div>
+    <div class="seat-row">
+      <button class="seat" data-seat="13">13</button>
+      <button class="seat" data-seat="14">14</button>
+      <div class="aisle"></div>
+      <button class="seat" data-seat="15">15</button>
+      <button class="seat" data-seat="16">16</button>
+    </div>
+  </div>
+  <button id="proceedBtn">Proceed to User Details</button>
+
+  <script>
+    // Function to get query parameters from URL
+    function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        bus: params.get('bus'),
+        sourceCity: params.get('source-city'),
+        destinationCity: params.get('destination-city'),
+        travelDate: params.get('travel-date')
+      };
+    }
+
+    // Display the bus and travel details
+    function displayBusInfo() {
+      const { bus, sourceCity, destinationCity, travelDate } = getQueryParams();
+      const busInfoContainer = document.getElementById('bus-info');
+      busInfoContainer.innerHTML = `
+        <h3>Bus ${bus} selected: ${sourceCity} to ${destinationCity}</h3>
+        <p>Date of travel: ${travelDate}</p>
+      `;
+    }
+
+    // Run on page load to show bus details
+    window.onload = function() {
+      displayBusInfo();
+    };
+
+    // Handle seat selection and proceed to the next step
+    let selectedSeats = [];
+
+    document.querySelectorAll('.seat').forEach(button => {
+      button.addEventListener('click', function() {
+        const seatNumber = this.getAttribute('data-seat');
+
+        // Toggle seat selection
+        if (selectedSeats.includes(seatNumber)) {
+          selectedSeats = selectedSeats.filter(seat => seat !== seatNumber);
+          this.classList.remove('selected');
+        } else {
+          selectedSeats.push(seatNumber);
+          this.classList.add('selected');
+        }
+      });
+    });
+
+    // Proceed button functionality
+    document.getElementById('proceedBtn').addEventListener('click', function() {
+      const { bus, sourceCity, destinationCity, travelDate } = getQueryParams();
+
+      // Store seat details in localStorage or pass them via query string
+      localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats));
+      
+      // Redirect to user details page with bus and travel info
+      window.location.href = `user.html?bus=${bus}&source-city=${sourceCity}&destination-city=${destinationCity}&travel-date=${travelDate}`;
+    });
+  </script>
+</body>
+</html>

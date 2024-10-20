@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Ticket Booking - Fare Calculation</title>
+  <link rel="stylesheet" href="fare.css">
+</head>
+<body>
+  <h2>Seat Fare Calculation</h2>
+  
+  <form id="fareForm">
+    <label for="numSeats">Select number of seats (1-16):</label>
+    <input type="number" id="numSeats" min="1" max="16" value="1" required>
+    
+    <p id="fareAmount">Fare Amount: ₹0</p>
+    
+    <button type="submit">Proceed to Payment</button>
+  </form>
+
+  <script>
+    const farePerSeat = 700; // Fare per seat (in INR)
+    
+    // Get references to the form elements
+    const numSeatsInput = document.getElementById('numSeats');
+    const fareAmountElement = document.getElementById('fareAmount');
+    
+    // Function to calculate the fare
+    function calculateFare() {
+      const numSeats = parseInt(numSeatsInput.value);
+      const totalFare = numSeats * farePerSeat;
+      fareAmountElement.innerText = `Fare Amount: ₹${totalFare}`;
+      
+      // Store the total fare in localStorage
+      localStorage.setItem('totalFare', totalFare);
+    }
+    
+    // Add event listener to update fare when the number of seats is changed
+    numSeatsInput.addEventListener('input', calculateFare);
+    
+    // Calculate initial fare on page load
+    calculateFare();
+    
+    // Handle form submission
+    document.getElementById('fareForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      // Proceed to payment page (you can customize the redirection)
+      window.location.href = 'pay.html';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Ticket Booking - Payment</title>
+  <link rel="stylesheet" href="pay.css">
+  <style>
+    .payment-method {
+      margin: 10px 0;
+    }
+    .payment-option {
+      margin: 10px 0;
+    }
+    .payment-form {
+      display: none; /* Initially hide all payment forms */
+    }
+  </style>
+</head>
+<body>
+  <h2>Payment</h2>
+
+  <!-- Payment Method Selection -->
+  <div class="payment-method">
+    <label>Select Payment Method:</label>
+    <select id="paymentMethod">
+      <option value="" disabled selected>Select a payment method</option>
+      <option value="card">Credit/Debit Card</option>
+      <option value="phonepe">PhonePe</option>
+      <option value="googlepay">Google Pay</option>
+    </select>
+  </div>
+
+  <!-- Card Payment Form -->
+  <form id="cardForm" class="payment-form">
+    <h3>Card Payment</h3>
+    <input type="text" placeholder="Card Number" required>
+    <input type="text" placeholder="Card Holder Name" required>
+    <input type="month" placeholder="Expiry Date" required>
+    <input type="text" placeholder="CVV" required>
+    <button type="submit">Confirm Payment</button>
+  </form>
+
+  <!-- PhonePe Payment Form -->
+  <form id="phonepeForm" class="payment-form">
+    <h3>PhonePe Payment</h3>
+    <input type="text" placeholder="PhonePe Number" required>
+    <button type="submit">Confirm Payment via PhonePe</button>
+  </form>
+
+  <!-- Google Pay Payment Form -->
+  <form id="googlepayForm" class="payment-form">
+    <h3>Google Pay Payment</h3>
+    <input type="text" placeholder="Google Pay UPI ID" required>
+    <button type="submit">Confirm Payment via Google Pay</button>
+  </form>
+
+  <script>
+    // Get the payment method dropdown and forms
+    const paymentMethodDropdown = document.getElementById('paymentMethod');
+    const cardForm = document.getElementById('cardForm');
+    const phonepeForm = document.getElementById('phonepeForm');
+    const googlepayForm = document.getElementById('googlepayForm');
+
+    // Handle payment method selection
+    paymentMethodDropdown.addEventListener('change', function() {
+      const selectedMethod = this.value;
+
+      // Hide all forms first
+      cardForm.style.display = 'none';
+      phonepeForm.style.display = 'none';
+      googlepayForm.style.display = 'none';
+
+      // Show the relevant form based on the selected payment method
+      if (selectedMethod === 'card') {
+        cardForm.style.display = 'block';
+      } else if (selectedMethod === 'phonepe') {
+        phonepeForm.style.display = 'block';
+      } else if (selectedMethod === 'googlepay') {
+        googlepayForm.style.display = 'block';
+      }
+    });
+
+    // Handle form submission
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        window.location.href = 'conform.html';
+      });
+    });
+  </script>
+</body>
+</html>

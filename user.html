@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus Ticket Booking - User Details</title>
+  <link rel="stylesheet" href="user.css">
+</head>
+<body>
+  <h2>Enter Your Details</h2>
+  <div id="selected-seats-info"></div>
+  
+  <form id="detailsForm">
+    <input type="text" id="fullName" placeholder="Full Name" required>
+    <select id="sex" required>
+      <option value="" disabled selected>Select Sex</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="text" id="phone" placeholder="Phone Number" required>
+    <button type="submit">Proceed</button>
+  </form>
+
+  <script>
+    // Retrieve selected seats from localStorage
+    const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
+    const seatsInfoContainer = document.getElementById('selected-seats-info');
+    
+    // Display the selected seats
+    if (selectedSeats && selectedSeats.length > 0) {
+      seatsInfoContainer.innerHTML = `<p>Selected Seats: ${selectedSeats.join(', ')}</p>`;
+    } else {
+      seatsInfoContainer.innerHTML = `<p>No seats selected.</p>`;
+    }
+
+    document.getElementById('detailsForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const fullName = document.getElementById('fullName').value;
+      const sex = document.getElementById('sex').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      // Store user details in localStorage
+      localStorage.setItem('fullName', fullName);
+      localStorage.setItem('sex', sex);
+      localStorage.setItem('email', email);
+      localStorage.setItem('phone', phone);
+
+      // Proceed to payment page
+      window.location.href = 'fare.html';
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+

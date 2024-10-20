@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  color: #5b799e;
+  background-image: url('yadav.jpg'); /* Background image */
+  background-size: cover; /* Cover the viewport */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent repeating */
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  position: relative; /* For absolute positioning of contact section */
+}
+
+.logo {
+  width: 110%; /* Full width */
+  height: 100px; /* Fixed height */
+  overflow: hidden; /* Hides overflowing parts of the image */
+}
+
+.logo img {
+  width: 100%;
+  height: 100px; /* Height adjusted */
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+.contact {
+  position: absolute; /* Absolute positioning */
+  right: 30px;
+  top: 50%; /* Vertical centering */
+  transform: translateY(-50%); /* Adjust for perfect vertical alignment */
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for separation */
+}
+
+.contact p {
+  font-size: 14px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 20px; /* Space between text and button */
+}
+
+.sign-in {
+  background-color: #4CAF50; /* Green button */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  transition: background-color 0.3s; /* Hover effect */
+}
+
+.sign-in:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+main {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero {
+  background-color: #e8f4ff;
+  padding: 30px 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Depth shadow */
+}
+
+.hero h1 {
+  font-size: 36px;
+  color: #333;
+  font-weight: 700;
+}
+
+.hero h1 span {
+  color: #0070ff;
+  text-decoration: underline; /* Underline emphasized text */
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  color: #0070ff;
+  background-color: #f0faff;
+  border-radius: 8px; /* Rounded corners */
+}
+
+.discount {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.discount h2 {
+  font-size: 24px;
+  font-weight: 700; /* Bold heading */
+}
+
+.search {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border: 1px solid #ddd;
+}
+
+.search h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #0070ff; /* Blue theme for headers */
+  font-weight: 700;
+}
+
+.search form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search input[type="text"], 
+.search input[type="date"] {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 80%;
+  transition: border-color 0.3s;
+}
+
+.search input[type="text"]:focus, 
+.search input[type="date"]:focus {
+  border-color: #0070ff; /* Border highlight on focus */
+}
+
+.search button {
+  background-color: #0070ff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search button:hover {
+  background-color: #005bb5; /* Darker blue on hover */
+}
+
+.date-selector {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.date-selector input {
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.date-selector input:focus {
+  border-color: #0070ff;
+}
